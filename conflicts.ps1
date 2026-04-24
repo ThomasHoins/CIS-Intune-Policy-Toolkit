@@ -1,8 +1,8 @@
 # =========================
 # CONFIG
 # =========================
-$policyName1 = "CIS Intune Baseline (L2)  4.0.0"
-$policyName2 = "Windows 11 Baseline"
+$policyName1 = "CIS Intune Baseline (L2)  4.0.0" #old /removed
+$policyName2 = "Windows 11 Baseline" #new / added
 $outputExcel = "C:\Temp\IntunePolicyDiff_Live.xlsx"
 
 # =========================
