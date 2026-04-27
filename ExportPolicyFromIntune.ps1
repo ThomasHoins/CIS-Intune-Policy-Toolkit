@@ -1,3 +1,12 @@
+<#
+.SYNOPSIS
+Export a Microsoft Intune configuration policy to JSON.
+.DESCRIPTION
+Connects to Microsoft Graph, lists available Intune configuration policies,
+lets the user select one, and exports the policy with expanded settings to a JSON file.
+.NOTES
+Requires Microsoft Graph PowerShell SDK and DeviceManagementConfiguration.Read.All.
+#>
 # =========================
 # INTUNE POLICY EXPORT TOOL
 # =========================

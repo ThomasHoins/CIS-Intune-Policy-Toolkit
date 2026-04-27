@@ -1,4 +1,14 @@
-﻿$folderPath = "C:\Users\thomas.hoins\Downloads\IntuneWindows11v4.0.0\Settings Catalog\Level 1&2"
+﻿<#
+.SYNOPSIS
+Merge multiple CIS Intune Settings Catalog JSON policies into a single policy.
+.DESCRIPTION
+Reads all JSON policy files from a configured folder, detects duplicates and conflicts
+by settingDefinitionId, merges settings into one output policy, and writes
+mergedPolicy.json for later import.
+.NOTES
+Adjust $folderPath to the local CIS policy JSON folder before running.
+#>
+$folderPath = "C:\temp\IntuneWindows11v4.0.0\Settings Catalog\Level 1&2"
 
 $files = Get-ChildItem -Path $folderPath -Filter *.json
 

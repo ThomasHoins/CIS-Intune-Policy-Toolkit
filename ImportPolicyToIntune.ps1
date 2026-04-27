@@ -1,3 +1,13 @@
+<#
+.SYNOPSIS
+Import a Microsoft Intune configuration policy from JSON.
+.DESCRIPTION
+Displays a Windows file open dialog to select a local policy JSON file,
+loads the JSON, optionally removes an existing policy with the same name,
+and imports the policy to Intune using Microsoft Graph.
+.NOTES
+Requires Microsoft Graph PowerShell SDK and DeviceManagementConfiguration.ReadWrite.All.
+#>
 # =========================
 # INTUNE POLICY IMPORT TOOL
 # =========================

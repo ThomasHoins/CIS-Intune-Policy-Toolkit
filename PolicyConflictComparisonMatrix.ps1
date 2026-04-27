@@ -1,18 +1,34 @@
+<#
+.SYNOPSIS
+Compare a base Intune policy against other policies and generate a matrix.
+.DESCRIPTION
+Loads a base policy from file or from Intune, finds other policies with overlapping
+settings, and creates a comparison matrix of setting values.
+Outputs a summary to the console and exports the result to Excel.
+.PARAMETER BasePolicyPath
+Path to a local JSON policy file to use as the base policy.
+.PARAMETER BasePolicyName
+Name of a policy in Intune to use as the base policy.
+.PARAMETER OutputExcel
+Path to the Excel file that will be written.
+.NOTES
+Requires Microsoft Graph PowerShell SDK and optionally the ImportExcel module.
+#>
 # =========================
 # POLICY COMPARISON MATRIX
 # =========================
 # Vergleicht eine Basis-Policy gegen alle Policies des gleichen Typs
 # Ausgabe: Text (Kurzmeldungen) + Excel-Matrix
 #
-# Verwendung:
-# .\PolicyComparisonMatrix.ps1 -BasePolicyPath "C:\path\to\policy.json"
-# oder
-# .\PolicyComparisonMatrix.ps1 -BasePolicyName "Windows 11 Baseline"
+# Usage:
+# .\PolicyConflictComparisonMatrix.ps1 -BasePolicyPath "C:\path\to\policy.json"
+# or
+# .\PolicyConflictComparisonMatrix.ps1 -BasePolicyName "Windows 11 Baseline"
 
 param(
-    [string]$BasePolicyPath = "C:\Users\thomas.hoins\Downloads\IntuneWindows11v4.0.0\Settings Catalog\Level 1\CIS (L1) Windows 11 Baseline 4.0.0.json",
+    [string]$BasePolicyPath = "C:\temp\IntuneWindows11v4.0.0\Settings Catalog\Level 1\CIS (L1) Windows 11 Baseline 4.0.0.json",
     [string]$BasePolicyName = $null,
-    [string]$OutputExcel = "C:\Temp\PolicyComparison_Matrix.xlsx"
+    [string]$OutputExcel = "C:\temp\PolicyComparison_Matrix.xlsx"
 )
 
 # =========================
