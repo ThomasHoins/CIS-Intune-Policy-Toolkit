@@ -26,7 +26,7 @@ Requires Microsoft Graph PowerShell SDK and optionally the ImportExcel module.
 # .\PolicyConflictComparisonMatrix.ps1 -BasePolicyName "Windows 11 Baseline"
 
 param(
-    [string]$BasePolicyPath = "C:\temp\IntuneWindows11v4.0.0\Settings Catalog\Level 1\CIS (L1) Windows 11 Baseline 4.0.0.json",
+    [string]$BasePolicyPath = "C:\Users\thomas.hoins\Downloads\IntuneWindows11v4.0.0\Settings Catalog\Level 1&2\CIS (L2) Windows 11 Baseline 4.0.0.json",
     [string]$BasePolicyName = $null,
     [string]$OutputExcel = "C:\temp\PolicyComparison_Matrix.xlsx"
 )
