@@ -1,4 +1,4 @@
-﻿$folderPath = "C:\Users\thomas.hoins\Downloads\IntuneWindows11v4.0.0\Settings Catalog"
+﻿$folderPath = "C:\Users\thomas.hoins\Downloads\IntuneWindows11v4.0.0\Settings Catalog\Level 1"
 
 $files = Get-ChildItem -Path $folderPath -Filter *.json
 
