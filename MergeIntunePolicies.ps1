@@ -1,4 +1,4 @@
-﻿$folderPath = "C:\Users\thomas.hoins\Downloads\IntuneWindows11v4.0.0\Settings Catalog\Level 1"
+﻿$folderPath = "C:\Users\thomas.hoins\Downloads\IntuneWindows11v4.0.0\Settings Catalog\Level 1&2"
 
 $files = Get-ChildItem -Path $folderPath -Filter *.json
 
@@ -37,9 +37,6 @@ if ($conflicts) {
         Write-Host "SettingDefinitionId:" $c.Name -ForegroundColor Cyan
 
         foreach ($item in $c.Group) {
-
-            # Versuch, einen lesbaren Namen zu bekommen
-            $settingName = $item.settingInstance.settingDefinitionId
 
             # Wert extrahieren (funktioniert für die meisten Typen)
             $value = $null
