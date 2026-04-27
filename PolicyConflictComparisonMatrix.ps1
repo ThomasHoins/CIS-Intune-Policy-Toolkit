@@ -198,10 +198,11 @@ Write-Host "✔ Found $($baseSettings.Count) settings" -ForegroundColor Green
 Write-Host "`n🔎 Fetching all policies..." -ForegroundColor Cyan
 $allPolicies = Get-PolicyTemplates
 
-# Filter policies - get all Settings Catalog policies (policies with settings)
+# Filter policies by overlapping settingDefinitionIds
 $comparePolicies = @()
+$baseSettingIds = $baseSettings.Keys
 
-Write-Host "🔍 Finding all Settings Catalog policies..." -ForegroundColor Cyan
+Write-Host "🔍 Finding policies with overlapping settings..." -ForegroundColor Cyan
 
 foreach ($p in $allPolicies) {
     if ($p.id -eq $basePolicy.id) { continue }  # Skip base policy itself
@@ -209,11 +210,15 @@ foreach ($p in $allPolicies) {
     try {
         # Load full policy with settings
         $fullPolicy = Invoke-MgGraphRequest -Method GET -Uri "$apiBase/$($p.id)`?`$expand=settings"
+        $policySettings = Get-PolicySettings $fullPolicy
+        $policySettingIds = $policySettings.Keys
 
-        # Check if it's a Settings Catalog policy (has settings)
-        if ($fullPolicy.settings -and $fullPolicy.settings.Count -gt 0) {
+        # Check for overlapping settingDefinitionIds
+        $overlap = $baseSettingIds | Where-Object { $policySettingIds -contains $_ }
+
+        if ($overlap.Count -gt 0) {
             $comparePolicies += $fullPolicy
-            Write-Host "  ✓ Added: $($p.name)" -ForegroundColor Gray
+            Write-Host "  ✓ Added: $($p.name) ($($overlap.Count) overlapping settings)" -ForegroundColor Gray
         }
     }
     catch {
