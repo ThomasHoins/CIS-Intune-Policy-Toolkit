@@ -26,9 +26,9 @@ Requires Microsoft Graph PowerShell SDK and optionally the ImportExcel module.
 # .\PolicyConflictComparisonMatrix.ps1 -BasePolicyName "Windows 11 Baseline"
 
 param(
-    [string]$BasePolicyPath = "C:\Users\thomas.hoins\Downloads\IntuneWindows11v4.0.0\Settings Catalog\MS Baseline_slim.json",
-    [string]$BasePolicyName = $null,
-    [string]$OutputExcel = "C:\Users\thomas.hoins\Downloads\IntuneWindows11v4.0.0\Settings Catalog\Compare_MS_Baseline_slim.xlsx"
+    [string]$BasePolicyPath = "C:\Users\$env:USERNAME\Downloads\IntuneWindows11v4.0.0\Settings Catalog\Bitlocker\CIS (BL) BitLocker - Windows 11 Intune 4.0.0.json", #"C:\Users\$env:USERNAME\Downloads\IntuneWindows11v4.0.0\Settings Catalog\MS Baseline_slim.json",
+    [string]$BasePolicyName =  $null,
+    [string]$OutputExcel = "C:\Users\$env:USERNAME\Downloads\IntuneWindows11v4.0.0\Settings Catalog\Compare_Bitlocker.xlsx" 
 )
 
 # =========================
@@ -115,25 +115,6 @@ function Get-PolicyTemplates() {
         Write-Host "❌ Error fetching templates: $_" -ForegroundColor Red
         return @()
     }
-}
-
-# =========================
-# HELPER: GET POLICY TYPE
-# =========================
-function Get-PolicyType([string]$settingsCatalogIds) {
-    $settingIds = $settingsCatalogIds -split ","
-    $types = @()
-    
-    foreach ($id in $settingIds) {
-        if ($id -like "*defender*" -or $id -like "*antivirus*") { $types += "Defender" }
-        elseif ($id -like "*firewall*") { $types += "Firewall" }
-        elseif ($id -like "*bitlocker*") { $types += "BitLocker" }
-        elseif ($id -like "*update*") { $types += "WindowsUpdate" }
-        elseif ($id -like "*uac*") { $types += "UAC" }
-        else { $types += "Other" }
-    }
-    
-    return ($types | Select-Object -Unique | Select-Object -First 1)
 }
 
 # ===========================
