@@ -26,9 +26,9 @@ Requires Microsoft Graph PowerShell SDK and optionally the ImportExcel module.
 # .\PolicyConflictComparisonMatrix.ps1 -BasePolicyName "Windows 11 Baseline"
 
 param(
-    [string]$BasePolicyPath = "C:\Users\$env:USERNAME\Downloads\IntuneWindows11v4.0.0\Settings Catalog\Bitlocker\CIS (BL) BitLocker - Windows 11 Intune 4.0.0.json", #"C:\Users\$env:USERNAME\Downloads\IntuneWindows11v4.0.0\Settings Catalog\MS Baseline_slim.json",
+    [string]$BasePolicyPath = "C:\Users\$env:USERNAME\Downloads\IntuneWindows11v4.0.0\Settings Catalog\MS Baseline_slim.json",
     [string]$BasePolicyName =  $null,
-    [string]$OutputExcel = "C:\Users\$env:USERNAME\Downloads\IntuneWindows11v4.0.0\Settings Catalog\Compare_Bitlocker.xlsx" 
+    [string]$OutputExcel = "C:\Users\$env:USERNAME\Downloads\IntuneWindows11v4.0.0\Settings Catalog\MS Baseline_Comparison.xlsx" 
 )
 
 # =========================
