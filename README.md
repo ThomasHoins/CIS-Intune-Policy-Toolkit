@@ -13,7 +13,7 @@ This repository contains PowerShell tools for working with CIS Intune policy JSO
 ## Intended workflow
 
 1. Download CIS Intune policies from the CIS Workbench:
-   `https://workbench.cisecurity.org/files?q=intune&tags=3`
+'https://workbench.cisecurity.org/files?q=intune&tags=3'
 2. Unpack the downloaded packages and identify the individual policy JSON files.
 3. Use `MergeIntunePolicies.ps1` to merge Level 1 / Level 2 Settings Catalog policies from a folder.
 4. Use `CompareTwoPolicyJSONs.ps1` or `PolicyConflictComparisonMatrix.ps1` to compare policy settings and find differences.
